@@ -1,0 +1,1485 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Dashboard for Airflow ",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 9,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+      },
+      "description": "‫این کوئری بررسی می‌کند که آیا در ۵ دقیقه گذشته heartbeat ارسال شده یا نه. اگر عددش0 بود یعنی Scheduler مشکلی دارد.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 17,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+          },
+          "editorMode": "code",
+          "expr": "rate(airflow_scheduler_heartbeat{namespace=\"$namespace\"}[5m])\n",
+          "interval": "",
+          "legendFormat": "{{pod}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Scheduler heartbeat",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+      },
+      "description": "‫این نرخ heartbeat را در ۵ دقیقه گذشته می‌دهد. مقدار 0 یعنی triggerer گیر کرده یا کرش کرده است.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "id": 63,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+          },
+          "editorMode": "code",
+          "expr": "rate(airflow_triggerer_heartbeat{namespace=\"$namespace\"}[5m])",
+          "interval": "",
+          "legendFormat": "{{pod}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Triggerer heartbeat",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+      },
+      "description": "‫airflow_dagrun_duration یک متریک histogram (یا summary) است که مدت زمان اجرای یک DAG Run را از لحظه‌ای که شروع می‌شود تا لحظه‌ای که به پایان می‌رسد، اندازه می‌گیرد.\n\n‫هر بار که یک DAG Run به حالت success, failed, skipped, یا upstream_failed می‌رسد، این متریک به‌روزرسانی می‌شود.\n\n‫وقتی یک DAG اجرا می‌شود (چه به صورت زمان‌بندی‌شده، دستی یا با ترایگر خارجی)،‫ یک DAG Run ساخته می‌شود که نمایانگر اجرای کل DAG در آن لحظه است.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 51,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+          },
+          "editorMode": "code",
+          "expr": "airflow_dagrun_duration{namespace=\"$namespace\"}",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{dag_id}} p{{quantile}}",
+          "refId": "A"
+        }
+      ],
+      "title": "DAG run duration",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+      },
+      "description": "‫این متریک در واقع مدت‌زمان اجرای DAGهایی را نشان می‌دهد که با موفقیت (state = success) به پایان رسیده‌اند.\n\n‫این متریک مدت زمان (Duration) بین start_date و end_date یک DAG Run موفق را اندازه‌گیری می‌کند. فقط برای DAGهایی که با موفقیت کامل شده‌اند (نه failed یا skipped یا ...).",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 25,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+          },
+          "editorMode": "code",
+          "expr": "airflow_dagrun_duration_success{namespace=\"$namespace\"}",
+          "format": "time_series",
+          "interval": "",
+          "legendFormat": "{{dag_id}} p{{quantile}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Success DAG run duration",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+      },
+      "description": "‫میزان تاخیر (Delay) بین زمان برنامه‌ریزی‌شده (Scheduled Time) و زمان واقعی شروع اجرای یک DAG Run را اندازه می‌گیرد.\n\n‫وقتی یک DAG قرار است در زمان مشخصی اجرا شود (مثلاً هر روز ساعت 1 صبح)، این متریک نشان می‌دهد که واقعاً چند میلی‌ثانیه یا ثانیه بعد از آن زمان برنامه‌ریزی‌شده اجرا شده است.\n\n‫اگر این مقدار زیاد باشد یعنی اجرای DAG با تأخیر شروع شده (مثلاً به خاطر بار زیاد Scheduler یا مشکلات منابع).",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "id": 27,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+          },
+          "editorMode": "code",
+          "expr": "airflow_dagrun_schedule_delay{namespace=\"$namespace\"} * 1000",
+          "interval": "",
+          "legendFormat": "{{dag_id}} p{{quantile}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "DAG run schedule delay",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+      },
+      "description": "‫این متریک نشان‌دهنده‌ی تعداد تسک‌های (Task) در حال اجرای فعلی است که Executor ایرفلو مدیریت می‌کند، داخل namespace مشخص شده.\n\n‫توضیح بیشتر:\n‫هر DAG از چند تسک تشکیل شده که توسط Executor اجرا می‌شوند.\n\nاین متریک تعداد تسک‌هایی را نشان می‌دهد‫ که هم‌اکنون روی Executor در حال اجرا هستند.\n\n‫عدد بزرگ یعنی Executor مشغول اجرای تسک‌های زیادی است؛ عدد کوچک یعنی بار اجرای تسک‌ها کمتر است.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 30
+      },
+      "id": 62,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "airflow_executor_running_tasks{namespace=\"$namespace\"}",
+          "legendFormat": "{{__name__}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Number of running tasks on executor",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+      },
+      "description": "Number of queued tasks on executor",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 30
+      },
+      "id": 61,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "airflow_executor_queued_tasks{namespace=\"$namespace\"}",
+          "legendFormat": "{{__name__}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Number of queued tasks on executor",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+      },
+      "description": "این متریک  شان‌دهنده‌ی تعداد اسلات‌های‫ آزاد (free slots) در اجرای تسک‌ها توسط executor است\n\n\n‫Executor در Airflow مسئول اجرای تسک‌هاست.\n\n‫هر executor ظرفیت محدودی برای اجرای تسک‌ها دارد که به صورت اسلات (slot) مدیریت می‌شود.\n\nاین متریک نشان می‌دهد که در حال حاضر‫ چند اسلات برای اجرای تسک‌های جدید خالی و آماده هستند.\n\n‫اگر این عدد پایین یا صفر باشد، یعنی executor ظرفیت کافی برای اجرای تسک‌های جدید را ندارد و ممکن است تسک‌ها صف شوند.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 38
+      },
+      "id": 60,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "airflow_executor_open_slots{namespace=\"$namespace\"}",
+          "legendFormat": "{{__name__}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Number of Free slots on executor",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+      },
+      "description": "‫این متریک نشان‌دهنده‌ی تعداد DAGهایی است که ایرفلو در حافظه (در DAGBag) بارگذاری کرده است \n\n‫DAGBag مجموعه‌ای از DAGهای تعریف‌شده است که Airflow بارگذاری می‌کند تا بتواند آن‌ها را مدیریت و اجرا کند.\n\n‫این متریک به شما می‌گوید چند DAG در حال حاضر لود شده و آماده اجرا هستند.\n\n‫مقدار این متریک معمولاً برابر است با تعداد DAGهای فعال یا تعریف‌شده در آن محیط.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 38
+      },
+      "id": 58,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "airflow_dagbag_size{namespace=\"$namespace\"}",
+          "legendFormat": "{{__name__}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Number of DAGs",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+      },
+      "description": "‫کل زمان صرف‌شده برای پردازش (Parse) DAG ها در یک بازه زمانی مشخص\n\n‫وقتی Airflow دک ها را بارگذاری می‌کند، ابتدا فایل‌های DAG (معمولاً فایل‌های Python) را می‌خواند و پردازش می‌کند.\n\n‫این پردازش شامل تفسیر (پارس کردن) کد DAG و تبدیل آن به ساختار قابل اجرا در Airflow است.\n\nاین متریک زمان کل صرف‌شده برای این‫ پردازش را نشان می‌دهد.\n\n‫اگر مقدار این متریک زیاد باشد، یعنی DAGها زمان زیادی برای پردازش می‌برند که ممکن است نشانه‌ای از سنگینی DAGها یا پیچیدگی زیاد آنها باشد.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 45
+      },
+      "id": 59,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "airflow_dag_processing_total_parse_time{namespace=\"$namespace\"}",
+          "legendFormat": "{{pod}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Seconds taken to scan and import all DAG files once",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+      },
+      "description": "‫نشان‌دهنده تعداد دفعاتی است که Airflow در هنگام ایمپورت کردن DAGها با خطا مواجه شده است.\n\n‫هنگامی که Scheduler می‌خواهد DAGها را از فایل‌های پایتون در مسیر dags/ لود کند، این فایل‌ها را ایمپورت می‌کند (مثل اجرای import dag_file.py). اگر در این فرآیند ایمپورت، خطایی در کد وجود داشته باشد (مثل سینتکس اشتباه، نام ماژول اشتباه، ارور در فانکشن، یا حتی مشکل در کانفیگ)، آن فایل به‌عنوان import error ثبت‫ می‌شود.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 52
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+          },
+          "editorMode": "code",
+          "expr": "airflow_dag_processing_import_errors{namespace=\"$namespace\"}",
+          "interval": "",
+          "legendFormat": "{{__name__}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Dagbag import errors",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "airflow_dagrun_failed {__name__=\"airflow_dagrun_failed\", container=\"statsd\", dag_id=\"clickhouse_mysql_pipeline_k8s\", endpoint=\"statsd-scrape\", instance=\"10.233.124.235:9102\", job=\"airflow-668c5f6d-statsd\", namespace=\"edge-services-668c5f6dfa4c420cbfd7ec20b75f79bc\", pod=\"airflow-668c5f6d-statsd-669d847bbf-s5c9m\", quantile=\"0.5\", service=\"airflow-668c5f6d-statsd\"}",
+                  "airflow_dagrun_failed {__name__=\"airflow_dagrun_failed\", container=\"statsd\", dag_id=\"clickhouse_mysql_pipeline_k8s\", endpoint=\"statsd-scrape\", instance=\"10.233.124.235:9102\", job=\"airflow-668c5f6d-statsd\", namespace=\"edge-services-668c5f6dfa4c420cbfd7ec20b75f79bc\", pod=\"airflow-668c5f6d-statsd-669d847bbf-s5c9m\", quantile=\"0.9\", service=\"airflow-668c5f6d-statsd\"}",
+                  "clickhouse_mysql_pipeline_k8s",
+                  "{__name__=\"airflow_dagrun_failed\", container=\"statsd\", dag_id=\"clickhouse_mysql_pipeline_k8s\", endpoint=\"statsd-scrape\", instance=\"10.233.124.235:9102\", job=\"airflow-668c5f6d-statsd\", namespace=\"edge-services-668c5f6dfa4c420cbfd7ec20b75f79bc\", pod=\"airflow-668c5f6d-statsd-669d847bbf-s5c9m\", quantile=\"0.99\", service=\"airflow-668c5f6d-statsd\"}",
+                  "{__name__=\"airflow_ti_failures\", container=\"statsd\", endpoint=\"statsd-scrape\", instance=\"10.233.126.196:9102\", job=\"airflow-daa2b814-statsd\", namespace=\"edge-services-daa2b814b5d84f86bbaf025f3d181540\", pod=\"airflow-daa2b814-statsd-6b8b8d695-qgr7q\", service=\"airflow-daa2b814-statsd\"}",
+                  "{__name__=\"airflow_ti_failures\", container=\"statsd\", endpoint=\"statsd-scrape\", instance=\"10.233.124.235:9102\", job=\"airflow-668c5f6d-statsd\", namespace=\"edge-services-668c5f6dfa4c420cbfd7ec20b75f79bc\", pod=\"airflow-668c5f6d-statsd-669d847bbf-s5c9m\", service=\"airflow-668c5f6d-statsd\"}",
+                  "{__name__=\"airflow_ti_failures\", container=\"statsd\", endpoint=\"statsd-scrape\", instance=\"10.233.126.215:9102\", job=\"airflow-daa2b814-statsd\", namespace=\"edge-services-daa2b814b5d84f86bbaf025f3d181540\", pod=\"airflow-daa2b814-statsd-6b8b8d695-vghz4\", service=\"airflow-daa2b814-statsd\"}",
+                  "airflow_ti_failures {__name__=\"airflow_ti_failures\", container=\"statsd\", endpoint=\"statsd-scrape\", instance=\"10.233.124.235:9102\", job=\"airflow-668c5f6d-statsd\", namespace=\"edge-services-668c5f6dfa4c420cbfd7ec20b75f79bc\", pod=\"airflow-668c5f6d-statsd-669d847bbf-s5c9m\", service=\"airflow-668c5f6d-statsd\"}",
+                  "airflow-668c5f6d-statsd-669d847bbf-s5c9m"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": []
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 52
+      },
+      "id": 57,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "airflow_dag_processing_processes{namespace=\"$namespace\"}",
+          "hide": false,
+          "legendFormat": "{{pod}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "airflow_dag_processing_processes",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+      },
+      "description": "‫نشان‌دهنده‌ی مدت‌زمانی است که KubernetesExecutor در Airflow صرف می‌کند تا TaskInstanceهای orphan شده (بدون صاحب) را دوباره به‌عهده بگیرد (adopt).\n\n\n‫در سناریوهایی مثل:\n\n‫ری‌استارت شدن Airflow Scheduler\n\n‫crash کردن بعضی از پادها\n\n‫انتقال وظایف در هنگام failover\n\n‫ممکن است taskهایی که در حال اجرا بودند orphan بشن (یعنی task هنوز در حال اجراست، اما ارتباطش با Scheduler قطع شده).\n\n‫در این حالت، KubernetesExecutor باید آن taskها را شناسایی و دوباره کنترل (adopt) کند.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "ops",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "Quantile:0.99"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 58
+      },
+      "id": 39,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+          },
+          "editorMode": "code",
+          "expr": "airflow_kubernetes_executor_adopt_task_instances_duration{namespace=\"$namespace\"}",
+          "interval": "",
+          "legendFormat": "Quantile:{{quantile}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": " Duration to Adopt Orphaned Task Instances (Kubernetes Executor)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+      },
+      "description": "‫نشان دهنده مدت‌زمانی است که KubernetesExecutor در Airflow صرف می‌کند تا Taskهایی که در صف هستند ولی هنوز اجرا نشده‌اند و قابل اجرا هم نیستند، پاک (Clear) کند.\n\n‫در شرایط خاص، ممکنه taskهایی:\n\n‫در حالت queued باقی بمونند،\n\n‫اما به دلایلی هیچ‌وقت launch نشن (مثلاً resource کافی در کلاستر وجود نداشته، یا خطایی رخ داده).\n\n‫Airflow برای جلوگیری از گیر کردن این taskها، مکانیزمی دارد تا این‌ها را پاکسازی (clear) کند.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "ops",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "Quantile:0.99"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 64
+      },
+      "id": 64,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "2935b706-8ce3-4428-a501-5104566460ec"
+          },
+          "editorMode": "code",
+          "expr": "airflow_kubernetes_executor_clear_not_launched_queued_tasks_duration{namespace=\"$namespace\"}",
+          "interval": "",
+          "legendFormat": "Quantile:{{quantile}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Duration to Clear Non-Launched Queued Tasks (Kubernetes Executor)",
+      "type": "timeseries"
+    }
+  ],
+  "preload": false,
+  "refresh": "1m",
+  "schemaVersion": 40,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allowCustomValue": false,
+        "current": {
+          "text": "edge-services-530eb3797c324e4b9b413d6d3e8fd15c",
+          "value": "edge-services-530eb3797c324e4b9b413d6d3e8fd15c"
+        },
+        "definition": "label_values(airflow_dagbag_size, namespace)",
+        "includeAll": false,
+        "label": "Namespace",
+        "name": "namespace",
+        "options": [],
+        "query": {
+          "qryType": 5,
+          "query": "label_values(airflow_dagbag_size, namespace)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Airflow cluster dashboard",
+  "uid": "lFXqBGxWk",
+  "version": 51,
+  "weekStart": ""
+}
